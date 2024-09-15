@@ -9,9 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "luxon": "^3.5.0",
+    "mongoose": "^8.6.2",
+    "next": "14.2.11",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.11"
+    "shift-planning-system": "file:"
   },
   "devDependencies": {
     "postcss": "^8",
