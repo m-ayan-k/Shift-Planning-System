@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import Layout from "../../components/AdminLayout"
+import withAuth from '@/components/withAuth';
 
 const getTimezones = () => {
     return Intl.supportedValuesOf('timeZone');
   };
 
-export default function EmployeeAvailability() {
+function AdminEmployeeAvailability() {
   const [employees, setEmployees] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [availability, setAvailability] = useState([]);
@@ -181,3 +182,5 @@ export default function EmployeeAvailability() {
     </Layout>
   );
 }
+
+export default withAuth(AdminEmployeeAvailability);

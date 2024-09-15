@@ -3,13 +3,13 @@ import Layout from "../../components/AdminLayout"
 import { useRouter } from 'next/router';
 import {jwtDecode } from 'jwt-decode';
 import { DateTime } from 'luxon';
-
+import withAuth from '@/components/withAuth';
 
 const getTimezones = () => {
   return Intl.supportedValuesOf('timeZone');
 };
 
-export default function CreateShiftForm() {
+function CreateShiftForm() {
     const router = useRouter();
 
     const [selectedDate, setSelectedDate] = useState('');
@@ -123,9 +123,8 @@ export default function CreateShiftForm() {
             });
 
             const data = await response.json();
-
             if (!response.ok) {
-                throw new Error(data.message || 'Failed to create shifts');
+                throw new Error(data.error || 'Failed to create shifts');
             }
             alert('Shifts created successfully!');
         } catch (error) {
@@ -134,7 +133,7 @@ export default function CreateShiftForm() {
             setLoading(false);
         }
     };
-    console.log(availableEmployees);
+    // console.log(availableEmployees);
     return (
       <Layout>
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg">
@@ -211,3 +210,5 @@ export default function CreateShiftForm() {
       </Layout>
     );
 }
+
+export default withAuth(CreateShiftForm);

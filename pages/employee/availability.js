@@ -2,8 +2,9 @@ import { useState,useEffect } from 'react';
 import AvailabilityForm from '../../components/AvailabilityForm';
 import AvailabilityTable from '../../components/AvailabilityTable';
 import Layout from '../../components/Layout';
+import withAuth from '@/components/withAuth';
 
-export default function EmployeeAvailability() {
+function EmployeeAvailability() {
   const [availability, setAvailability] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -11,7 +12,7 @@ export default function EmployeeAvailability() {
   const handleAvailabilitySubmit = (newAvailability) => {
     setAvailability(prevAvailability => [
       ...prevAvailability, 
-      ...newAvailability
+      ...newAvailability 
   ]);
   };
 
@@ -61,3 +62,6 @@ export default function EmployeeAvailability() {
     </Layout>
   );
 }
+
+
+export default withAuth(EmployeeAvailability);

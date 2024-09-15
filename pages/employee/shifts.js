@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import { DateTime } from 'luxon'; 
+import withAuth from '@/components/withAuth';
 
-
-export default function EmployeeShifts() {
+function EmployeeShifts() {
   const router = useRouter();
   const [shifts, setShifts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -128,3 +128,5 @@ export default function EmployeeShifts() {
     
   );
 }
+
+export default withAuth(EmployeeShifts);
